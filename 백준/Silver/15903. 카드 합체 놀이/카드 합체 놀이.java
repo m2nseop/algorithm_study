@@ -24,6 +24,9 @@ public class Main{
             sum += x;
         }
 
+        // 처음에는 정렬 -> 처음꺼 2개 뽑으면 그만 아닌가 했는데
+        // 시간초과가 남
+        
         for (int i = 0; i < m; i++) {
             long a = pq.poll();
             long b = pq.poll();
