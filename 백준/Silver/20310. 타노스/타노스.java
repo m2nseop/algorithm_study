@@ -5,15 +5,27 @@ public class Main{
 public static void main(String[] args) throws IOException {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     
-    String S = br.readLine();
-    // S 길이 -> 4 8 12
-    // S 길이 / 2 -> 2 4 6
-    // S 길이 / 4 -> 1 2 3
-    int len = S.length()/4; // 0 또는 1을 빼야하는 횟수 = 반복문 횟수
-   
+    StringBuilder S = new StringBuilder(br.readLine());
+    
+    int len = S.length();
+    
+    int countOne = ( S.length() - S.toString().replace("1","").length() ) / 2;
+    int countZero = ( S.length() - S.toString().replace("0","").length() ) / 2;
+    
+    for ( int i = 0; i < len ; i++){
+        
+        if (S.charAt(i) == '1' && countOne != 0){
+            // 없애야함
+            S.setCharAt(i, ' ');
+            countOne--;
+        }
+        if (S.charAt(len -1 -i) == '0' && countZero != 0 ){
+            // 없애야함
+            S.setCharAt(len -1 -i, ' ');
+            countZero--;
+        }
 
-    String result = "0".repeat(len) + "1".repeat(len);
-
-    System.out.println(result);
+    }
+    System.out.println(S.toString().replace(" ", ""));
 }
 }
